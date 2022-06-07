@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workers inc</title>
+  </head>
+  <body>
+    <div id="app">
+     
+      <div class="flex-container">
+
+        <div class="flex-child">
+          <div>
+            <h1>Collect</h1>
+            <h1>Food:  {{ food }} <span id="foodVal"></span></h1>
+            <h1>Wood: {{ wood }} <span id="woodVal"></span></h1>
+            <h1>Traps: {{ traps }}  <span id="trapsVal"></span> </h1>
+
+            <!-- use v-if for the below -->
+            <!-- show this button after a certain number of food and wood has been gathered -->
+            
+            <button @click="gatherFood">Gather Food</button> 
+            <button @click="gatherWood">Gather Wood</button>
+          </div>
+        </div>
+        
+        <div class="flex-child">
+          <div>
+            <h1>Build</h1>
+
+            <button @click="buildTrap">Build Trap (10 Wood, 5 Food) </button>
+          </div>
+        </div>
+
+        <div class="flex-child">
+          <div>
+            <h1>Fight</h1>
+          </div>
+        </div>
+
+        <div class="flex-child">
+          <div>
+            <h1>Shop</h1>
+          </div>
+        </div>
+
+
+        <!-- add two divs in the bottom half of the screen for CLI and info for workers-->
+        <!-- Generate workers -->
+        
+      </div>
+
+      <div class="flex-container">
+
+        <div class="flex-child">
+          <h1>unmet workers:  {{ unmetWorkers }} <span id="foodVal"></span></h1>
+          <button @click="meetworker">Meet Worker</button> 
+        </div>
+
+
+        <!-- consider adding a gradient red > green 0 > 100  --> 
+        <!-- https://stackoverflow.com/questions/7128675/from-green-to-red-color-depend-on-percentage -->
+        <!-- consider adding a button to dismiss workers  --> 
+        <!-- consider adding a cap on workers, otherwise the above is pointless  --> 
+        <!-- consider   --> 
+        <div class="flex-child">
+          <ul id="worker-display">
+            <li v-for="worker in metWorkers">
+              {{ worker }}
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+
+
+      <div class="flex-container">
+        <div class="flex-child">
+          <input type="text" v-model="myInput" @keyup.lazy.enter="readInput">
+          <p>{{ myInput }}</p>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
