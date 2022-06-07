@@ -166,9 +166,8 @@ createApp({
                 
             }
 
-            else if (app.type == "buy" && app.item == "cookie" && this.food >= 100 * Math.pow(1.25,this.cookies)){
-                this.food-=100;
-                this.cookies++;
+            else if (app.type == "buy") {
+                processPurchase();
             }
 
             else if (app.type == "iff"){
@@ -258,6 +257,25 @@ createApp({
             
 
         },
+
+        processPurchase(item){
+
+            if (item != "cookie") { // add other items to buy
+                return false;
+            }
+
+            // if (hasMoney(item))
+            // then buy item 
+            // and scale prices Math.pow(1.25,this.cookies))
+
+            if (! (this.food >= 100 * Math.pow(1.25,this.cookies)) ) { // buy the item and add process
+                this.food-=100;
+                this.cookies++;
+
+                return true;
+            } 
+        },
+
 
         getUser(id) {
             var user = this.metWorkers.filter(worker => {
